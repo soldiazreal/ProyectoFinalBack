@@ -1,7 +1,9 @@
-package model;
+package com.example.ProyectoFinalBack.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,6 +11,9 @@ import java.util.Set;
 
 @Entity
 @Table
+@Getter
+@Setter
+
 public class Odontologo {
     @Id
     @SequenceGenerator(name="odontologo_sequence",sequenceName = "odontologo_sequence", allocationSize = 1)
@@ -22,21 +27,6 @@ public class Odontologo {
     @JsonIgnore
     private Set<Turno> turnos = new HashSet<>();
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Set<Turno> getTurnos() {
-        return turnos;
-    }
-
-    public void setTurnos(Set<Turno> turnos) {
-        this.turnos = turnos;
-    }
 
     public Odontologo() {
     }
@@ -51,30 +41,6 @@ public class Odontologo {
     public Odontologo(String nombre, String apellido, String matricula) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.matricula = matricula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 

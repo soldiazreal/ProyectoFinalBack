@@ -1,9 +1,15 @@
-package model;
+package com.example.ProyectoFinalBack.model;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table
+
+@Getter
+@Setter
 
 public class Domicilio {
     @Id
@@ -42,46 +48,6 @@ public class Domicilio {
         this.calle = calle;
         this.numero = numero;
         this.localidad = localidad;
-        this.provincia = provincia;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCalle() {
-        return calle;
-    }
-
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    public String getProvincia() {
-        return provincia;
-    }
-
-    public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
 }

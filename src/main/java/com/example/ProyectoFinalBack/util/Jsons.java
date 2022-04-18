@@ -1,4 +1,4 @@
-package util;
+package com.example.ProyectoFinalBack.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
