@@ -1,10 +1,9 @@
-package com.example.ProyectoFinalBack.Security;
+package com.example.ProyectoFinalBack.login;
 
 import com.example.ProyectoFinalBack.repository.impl.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
     @Service

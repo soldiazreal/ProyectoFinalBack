@@ -1,7 +1,5 @@
-package com.example.ProyectoFinalBack.Security;
+package com.example.ProyectoFinalBack.login;
 
-import com.example.ProyectoFinalBack.Security.AppUser;
-import com.example.ProyectoFinalBack.Security.AppUserRole;
 import com.example.ProyectoFinalBack.repository.impl.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;

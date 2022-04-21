@@ -1,4 +1,4 @@
-package com.example.ProyectoFinalBack.Security;
+package com.example.ProyectoFinalBack.login;
 
 import lombok.Getter;
 import lombok.Setter;

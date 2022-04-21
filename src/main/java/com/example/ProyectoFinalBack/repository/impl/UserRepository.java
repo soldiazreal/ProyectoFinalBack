@@ -1,7 +1,7 @@
 package com.example.ProyectoFinalBack.repository.impl;
 
 
-import com.example.ProyectoFinalBack.Security.AppUser;
+import com.example.ProyectoFinalBack.login.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

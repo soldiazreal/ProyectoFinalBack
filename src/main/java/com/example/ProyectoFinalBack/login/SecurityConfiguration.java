@@ -1,4 +1,4 @@
-package com.example.ProyectoFinalBack.Security;
+package com.example.ProyectoFinalBack.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
