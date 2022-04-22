@@ -2,8 +2,6 @@ package com.example.ProyectoFinalBack.service.IService;
 
 import com.example.ProyectoFinalBack.exceptions.BadRequestException;
 import com.example.ProyectoFinalBack.exceptions.ResourceNotFoundException;
-import com.example.ProyectoFinalBack.model.Odontologo;
-import com.example.ProyectoFinalBack.model.OdontologoDTO;
 import com.example.ProyectoFinalBack.model.Paciente;
 import com.example.ProyectoFinalBack.model.PacienteDTO;
 
