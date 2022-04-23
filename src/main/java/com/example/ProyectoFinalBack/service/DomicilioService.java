@@ -3,10 +3,12 @@ package com.example.ProyectoFinalBack.service;
 import com.example.ProyectoFinalBack.model.Domicilio;
 import com.example.ProyectoFinalBack.repository.impl.DomicilioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class DomicilioService {
     private final DomicilioRepository domicilioRepository;
 

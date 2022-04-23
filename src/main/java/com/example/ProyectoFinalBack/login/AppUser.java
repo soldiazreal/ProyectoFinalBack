@@ -20,19 +20,19 @@ public class AppUser implements UserDetails{
     private int id;
     private String name;
     private String username;
-    private String password;
     private String email;
+    private String password;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
 
     public AppUser() {
     }
 
-    public AppUser(String name, String username, String password, String email, AppUserRole appUserRole) {
+    public AppUser(String name, String username, String email, String password, AppUserRole appUserRole) {
         this.name = name;
         this.username = username;
-        this.password = password;
         this.email = email;
+        this.password = password;
         this.appUserRole = appUserRole;
     }
 
