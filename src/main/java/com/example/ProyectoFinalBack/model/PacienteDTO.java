@@ -13,6 +13,6 @@ public class PacienteDTO {
     private String apellido;
     private Domicilio domicilio;
     private String documento;
+    private String email;
     private Date fechaAlta;
-
 }

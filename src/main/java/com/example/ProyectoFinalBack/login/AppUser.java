@@ -63,7 +63,4 @@ public class AppUser implements UserDetails{
         return true;
     }
 
-    public void setAppUserRole(AppUserRole appUserRole) {
-        this.appUserRole = appUserRole;
-    }
 }

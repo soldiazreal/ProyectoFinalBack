@@ -7,7 +7,7 @@ import java.sql.Time;
 import java.util.Date;
 
 @Entity
-@Table
+@Table (name = "turnos")
 
 public class Turno {
     @Id
@@ -25,20 +25,22 @@ public class Turno {
     private Date fecha;
     private Time hora;
 
-    public Turno(Odontologo odontologo, Paciente paciente, Date fecha) {
+    public Turno(Odontologo odontologo, Paciente paciente, Date fecha, Time hora) {
         this.odontologo = odontologo;
         this.paciente = paciente;
         this.fecha = fecha;
+        this.hora = hora;
     }
 
     public Turno() {
     }
 
-    public Turno(int id, Odontologo odontologo, Paciente paciente, Date fecha) {
+    public Turno(int id, Odontologo odontologo, Paciente paciente, Date fecha, Time hora) {
         this.id = id;
         this.odontologo = odontologo;
         this.paciente = paciente;
         this.fecha = fecha;
+        this.hora = hora;
     }
 
     public Paciente getPaciente() {

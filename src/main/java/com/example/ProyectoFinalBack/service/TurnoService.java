@@ -2,8 +2,12 @@ package com.example.ProyectoFinalBack.service;
 
 import com.example.ProyectoFinalBack.exceptions.BadRequestException;
 import com.example.ProyectoFinalBack.exceptions.ResourceNotFoundException;
+import com.example.ProyectoFinalBack.model.Odontologo;
+import com.example.ProyectoFinalBack.model.Paciente;
 import com.example.ProyectoFinalBack.model.Turno;
 import com.example.ProyectoFinalBack.model.TurnoDTO;
+import com.example.ProyectoFinalBack.repository.impl.OdontologoRepository;
+import com.example.ProyectoFinalBack.repository.impl.PacienteRepository;
 import com.example.ProyectoFinalBack.repository.impl.TurnoRepository;
 import com.example.ProyectoFinalBack.service.IService.ITurnoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,10 +27,18 @@ public class TurnoService implements ITurnoService {
 
     @Autowired
     ObjectMapper mapper;
+    @Autowired
+    private PacienteRepository pacienteRepository;
+    @Autowired
+    private OdontologoRepository odontologoRepository;
 
     @Override
     public Turno crearturno(TurnoDTO turnoDTO) {
-        Turno turno = mapper.convertValue(turnoDTO,Turno.class);
+        Paciente paciente = pacienteRepository.findById(turnoDTO.getPaciente().getId()).get();
+        Odontologo odontologo = odontologoRepository.findById(turnoDTO.getOdontologo().getId()).get();
+        turnoDTO.setPaciente(paciente);
+        turnoDTO.setOdontologo(odontologo);
+        Turno turno = mapper.convertValue(turnoDTO, Turno.class);
         return turnoRepository.save(turno);
     }
     @Override

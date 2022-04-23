@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
+@Table (name = "odontologos")
 @Getter
 @Setter
 

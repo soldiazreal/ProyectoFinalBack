@@ -17,9 +17,9 @@ public class DomicilioService {
         this.domicilioRepository = domicilioRepository;
     }
 
-    public Domicilio guardar(Domicilio d){
-        domicilioRepository.save(d);
-        return d;
+    public Domicilio guardar(Domicilio domicilio){
+        domicilioRepository.save(domicilio);
+        return domicilio;
     }
 
     public Optional<Domicilio> buscar(Integer id){return Optional.of(domicilioRepository.getOne(Integer.valueOf(id)));}
