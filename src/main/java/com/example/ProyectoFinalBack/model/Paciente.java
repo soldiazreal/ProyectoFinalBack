@@ -27,10 +27,10 @@ public class Paciente {
     @JoinColumn(name = "domicilio_id", referencedColumnName = "id")
     @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
     private Domicilio domicilio;
-    private String documento;
+    private String dni;
     private String email;
     @Temporal(TemporalType.DATE)
-    private Date fechaAlta;
+    private Date fechaIngreso;
     @OneToMany(mappedBy = "paciente",fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Turno> turnos = new HashSet<>();
@@ -38,23 +38,23 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(String nombre, String apellido, Domicilio domicilio, String documento, String email, Date fechaAlta) {
+    public Paciente(String nombre, String apellido, Domicilio domicilio, String dni, String email, Date fechaIngreso) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
-        this.documento = documento;
+        this.dni = dni;
         this.email = email;
-        this.fechaAlta = fechaAlta;
+        this.fechaIngreso = fechaIngreso;
     }
 
-    public Paciente(int id, String nombre, String apellido, Domicilio domicilio, String documento, String email, Date fechaAlta) {
+    public Paciente(int id, String nombre, String apellido, Domicilio domicilio, String dni, String email, Date fechaIngreso) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
-        this.documento = documento;
+        this.dni = dni;
         this.email = email;
-        this.fechaAlta = fechaAlta;
+        this.fechaIngreso = fechaIngreso;
     }
 
     @Override
@@ -64,9 +64,9 @@ public class Paciente {
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", domicilio=" + domicilio +
-                ", documento='" + documento + '\'' +
+                ", dni='" + dni + '\'' +
                 ", email='" + email + '\'' +
-                ", fechaAlta=" + fechaAlta +
+                ", fechaIngreso=" + fechaIngreso +
                 ", turnos=" + turnos +
                 '}';
     }

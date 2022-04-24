@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
     (function(){
 
-      const url = '/pacientes';
+      const url = '/turnos';
       const settings = {
         method: 'GET'
       }
@@ -10,34 +10,32 @@ window.addEventListener('load', function () {
       .then(response => response.json())
       .then(data => {
 
-         for(paciente of data){
-            var table = document.getElementById("pacienteTable");
-            var pacienteRow =table.insertRow();
-            let tr_id = 'tr_' + paciente.id;
-            pacienteRow.id = tr_id;
+         for(turno of data){
+            var table = document.getElementById("turnoTable");
+            var turnoRow =table.insertRow();
+            let tr_id = 'tr_' + turno.id;
+            turnoRow.id = tr_id;
 
             let deleteButton = '<button' +
-                                      ' id=' + '\"' + 'btn_delete_' + paciente.id + '\"' +
-                                      ' type="button" onclick="deleteBy('+paciente.id+')" class="btn btn-danger btn_delete">' +
+                                      ' id=' + '\"' + 'btn_delete_' + turno.id + '\"' +
+                                      ' type="button" onclick="deleteBy('+turno.id+')" class="btn btn-danger btn_delete">' +
                                       '&times' +
                                       '</button>';
 
             let updateButton = '<button' +
-                                      ' id=' + '\"' + 'btn_id_' + paciente.id + '\"' +
-                                      ' type="button" onclick="findBy('+paciente.id+')" class="btn btn-info btn_id">' +
-                                      paciente.id +
+                                      ' id=' + '\"' + 'btn_id_' + turno.id + '\"' +
+                                      ' type="button" onclick="findBy('+turno.id+')" class="btn btn-info btn_id">' +
+                                      turno.id +
                                       '</button>';
 
 
-            pacienteRow.innerHTML = '<td>' + updateButton + '</td>' +
-                    '<td class=\"td_nombre\">' + paciente.nombre.charAt(0).toUpperCase() + paciente.nombre.slice(1) + '</td>' +
-                    '<td class=\"td_apellido\">' + paciente.apellido.charAt(0).toUpperCase() + paciente.apellido.slice(1) + '</td>' +
-                    '<td class=\"td_dni\">' + paciente.dni + '</td>' +
-                    '<td class=\"td_fechaIngreso\">' + new Date(paciente.fechaIngreso).toISOString().slice(0,10)+ '</td>' +
-                    '<td class=\"td_domicilio\"> Calle ' + paciente.domicilio.calle + ' ' + paciente.domicilio.numero + '</td>' +
-                    '<td class=\"td_email\">' + paciente.email + '</td>' +
-
-                    '<td>' + deleteButton + '</td>';
+            turnoRow.innerHTML = '<td>' + updateButton + '</td>' +
+                    turnoRow.innerHTML = '<td>' + updateButton + '</td>' +
+                                        '<td class=\"td_fecha\">' + new Date(turno.fecha).toISOString().slice(0,10)  + '</td>' +
+                                        '<td class=\"td_hora\">' + turno.hora + '</td>' +
+                                        '<td class=\"td_paciente_id\">' + turno.paciente.nombre.charAt(0).toUpperCase() + turno.paciente.nombre.slice(1) + " " + turno.paciente.apellido.charAt(0).toUpperCase() + turno.paciente.apellido.slice(1) + '</td>' +
+                                        '<td class=\"td_odontologo_id\">' + turno.odontologo.nombre.charAt(0).toUpperCase() + turno.odontologo.nombre.slice(1) + " " + turno.odontologo.apellido.charAt(0).toUpperCase() + turno.odontologo.apellido.slice(1) + '</td>' +
+                                        '<td>' + deleteButton + '</td>';
 
         };
 

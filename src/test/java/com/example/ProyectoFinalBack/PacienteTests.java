@@ -29,8 +29,8 @@ public class PacienteTests {
         PacienteDTO pacienteDTO = new PacienteDTO();
         pacienteDTO.setNombre("Sol");
         pacienteDTO.setApellido("Diaz Real");
-        pacienteDTO.setDocumento("37654864");
-        pacienteDTO.setFechaAlta(new Date());
+        pacienteDTO.setDni("37654864");
+        pacienteDTO.setFechaIngreso(new Date());
         pacienteDTO.setDomicilio(new Domicilio("calle falsa", "123", "Springfield", "Springfield")
         );
         pacienteService.crearPaciente(pacienteDTO);
