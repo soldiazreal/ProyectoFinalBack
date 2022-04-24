@@ -3,6 +3,7 @@ package com.example.ProyectoFinalBack.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
     @Autowired
     private AppUserService userService;
 
@@ -24,12 +24,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/odontologos/**", "/pacientes/**")
-                .hasAuthority("ADMIN")
-                .antMatchers( "/index.html","/turnos.html", "/altaTurnos.html")
-                .hasAuthority("USER")
-                .antMatchers( "/index.html", "/pacientes.html", "/altaPacientes.html", "/odontologos.html", "/altaOdontologos.html")
-                .hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST, "/pacientes/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST,"/odontologos/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/pacientes/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/odontologos/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/pacientes/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/odontologos/**").hasAuthority("ADMIN")
+                .antMatchers("/turnos/**").authenticated()
+                .antMatchers("/alta-odontologos.html", "/odontologos.html", "/alta-pacientes.html", "/pacientes.html").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -49,9 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider =
-                new DaoAuthenticationProvider();
+    public DaoAuthenticationProvider daoAuthenticationProvider(){
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         provider.setUserDetailsService(userService);
         return provider;

@@ -47,8 +47,8 @@ window.addEventListener('load', function () {
               document.querySelector('#calle').value = paciente.calle;
               document.querySelector('#numero').value = paciente.numero;
               document.querySelector('#localidad').value = paciente.localidad;
-              document.querySelector('#provincia').value = paciente.provincia;
-              document.querySelector('#email').value = paciente.email;
+              document.querySelector('#provincia').value =paciente.provincia;
+              document.querySelector('email').value = paciente.email;
               document.querySelector('#div_paciente_updating').style.display = "block";
           }).catch(error => {
               alert("Error: " + error);

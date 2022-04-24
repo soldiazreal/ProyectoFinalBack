@@ -1,46 +1,51 @@
-window.addEventListener('load', function () {
+$(document).ready(function(){
     (function(){
-      const url = '/odontologos';
-      const settings = {
-        method: 'GET'
-      }
+        $.ajax({
+            type : "GET",
+            url : "/odontologos",
+            success: function(response){
+              $.each(response, (i, odontologo) => {
+              console.log("desde get " + odontologo.matricula)
+              console.log("desde get " + odontologo)
+                let get_More_Info_Btn = '<button' +
+                                            ' id=' + '\"' + 'btn_id_' + odontologo.id + '\"' +
+                                            ' type="button" class="btn btn-info btn_id">' +
+                                            odontologo.id +
+                                            '</button>';
+                 let deleteButton = '<button' +
+                                                      ' id=' + '\"' + 'btn_delete_' + odontologo.id + '\"' +
+                                                      ' type="button" onclick="deleteBy('+odontologo.id+')" class="btn btn-danger btn_delete">' +
+                                                      '&times' +
+                                                      '</button>';
+                let tr_id = 'tr_' + odontologo.id;
+                let odontologoRow = '<tr id=\"' + tr_id + "\"" + '>' +
+                          '<td>' + get_More_Info_Btn + '</td>' +
+                          '<td class=\"td_first_name\">' + normalizarString(odontologo.nombre) + '</td>' +
+                          '<td class=\"td_last_name\">' + normalizarString(odontologo.apellido) + '</td>' +
+                          '<td class=\"td_matricula\">' + odontologo.matricula + '</td>' +
+                            '<td>' + deleteButton + '</td>' +
 
-      fetch(url,settings)
-      .then(response => response.json())
-      .then(data => {
-         for(odontologo of data){
+                          '</tr>';
+                $('#odontologoTable tbody').append(odontologoRow);
+              });
+            },
+            error : function(e) {
+              alert("ERROR: ", e);
+              console.log("ERROR: ", e);
+            }
+        });
+    })();
 
-            var table = document.getElementById("odontologoTable");
-            var odontologoRow =table.insertRow();
-            let tr_id = 'tr_' + odontologo.id;
-            odontologoRow.id = tr_id;
+    function normalizarString(nombre) {
+      let nombreNormalizado = nombre.charAt(0).toUpperCase() + nombre.slice(1);
 
-            let deleteButton = '<button' +
-                                      ' id=' + '\"' + 'btn_delete_' + odontologo.id + '\"' +
-                                      ' type="button" onclick="deleteBy('+odontologo.id+')" class="btn btn-danger btn_delete">' +
-                                      '&times' +
-                                      '</button>';
-            let updateButton = '<button' +
-                                      ' id=' + '\"' + 'btn_id_' + odontologo.id + '\"' +
-                                      ' type="button" onclick="findBy('+odontologo.id+')" class="btn btn-info btn_id">' +
-                                      odontologo.id +
-                                      '</button>';
-            odontologoRow.innerHTML = '<td>' + updateButton + '</td>' +
-                    '<td class=\"td_nombre\">' + odontologo.nombre.toUpperCase() + '</td>' +
-                    '<td class=\"td_apellido\">' + odontologo.apellido.toUpperCase() + '</td>' +
-                    '<td class=\"td_matricula\">' + odontologo.matricula + </td> +
-                    '<td>' + deleteButton + '</td>';
-
-        };
-
-    })
-    })
+        return nombreNormalizado
+    }
 
     (function(){
-      let pathname = window.location.pathname;
-      if (pathname == "/odontologoList.html") {
-          document.querySelector(".nav .nav-item a:last").addClass("active");
-      }
-    })
-
-})
+        let pathname = window.location.pathname;
+        if (pathname == "/odontologos.html") {
+            $(".nav .nav-item a:last").addClass("active");
+        }
+    })();
+});
